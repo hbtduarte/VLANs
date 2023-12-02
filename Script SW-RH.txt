@@ -1,0 +1,40 @@
+Switch>enable
+Switch#configure terminal 
+Switch(config)#hostname SW-RH
+SW-RH(config)#enable secret 123
+
+SW-RH(config)#line console 0
+SW-RH(config-line)#enable secret 123
+
+SW-RH(config)#vlan 10
+SW-RH(config-vlan)#name VLAN-TI
+SW-RH(config-vlan)#exit
+
+SW-RH(config)#vlan 20
+SW-RH(config-vlan)#name VLAN-RH
+SW-RH(config-vlan)#exit
+SW-RH(config)#show vlan
+
+
+SW-RH(config)#interface range fastEthernet 0/1-02
+SW-RH(config-if-range)#switchport mode access 
+SW-RH(config-if-range)#switchport access vlan 10
+SW-RH(config-if-range)#exit
+
+
+SW-RH(config)#interface fastEthernet 0/3
+SW-RH(config-if)#switchport mode trunk 
+
+
+SW-RH(config)#interface range fastEthernet 0/4-05
+SW-RH(config-if-range)#switchport mode access 
+SW-RH(config-if-range)#switchport access vlan 20
+SW-RH(config-if-range)#exit
+
+
+SW-RH(config)#interface range fastEthernet 0/6-24
+SW-RH(config-if-range)#shutdown
+
+SW-RH(config)#exit
+SW-RH#
+SW-RH#copy running-config startup-config
