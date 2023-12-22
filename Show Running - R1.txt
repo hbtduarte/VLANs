@@ -1,4 +1,6 @@
-Current configuration : 911 bytes
+Building configuration...
+
+Current configuration : 960 bytes
 !
 version 15.4
 no service timestamps log datetime msec
@@ -8,6 +10,8 @@ no service password-encryption
 hostname R1
 !
 !
+!
+enable secret 5 $1$mERr$3HhIgMGBA/9qNmgzccuxv0
 !
 !
 !
